@@ -1,0 +1,26 @@
+pipleline{
+    agent any
+    stages{
+        stage('validate stage'){
+            steps{
+                withMaven(maven: '3_6_1'){
+                    sh 'mvn validate'
+                }
+            }
+        }
+        stage('compile stage'){
+            steps{
+                withMaven(maven: '3_6_1'){
+                    sh 'mvn compile'
+                }
+            }
+        }
+        stage('test stage'){
+            steps{
+                withMaven(maven: '3_6_1'){
+                    sh 'mvn test'
+                }
+            }
+        }
+    }
+}
